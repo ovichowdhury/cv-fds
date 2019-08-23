@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Entity.Notification>
+
+@{
+    ViewBag.Title = "Archive";
+    Layout = "~/Views/Shared/_PortalLayout.cshtml";
+}
+
+<br />
+@if (Model == null)
+{
+    <p style="width:450px; margin:auto">No Notification to show</p>
+}
+else
+{
+    foreach (var item in Model) {
+        <div class="media" style="width:500px; margin:auto">
+            <img class="mr-3" src="@Url.Content(item.ImageURL)" alt="fire Image" width="200" height="150">
+            <div class="media-body">
+                <a href="@Url.Action("Delete", "Home", new {id = item.Id })" class="close" aria-label="Close" style="float:right">
+                    <span aria-hidden="true">&times;</span>
+                </a>
+                <p>Fire Rate : @item.FireRate</p>
+                <p>Temperature : @item.Temp</p>
+                <p>Smoke Rate : @item.SmokeRate</p>
+                <p>Time : @item.Time.ToString("dd/MM/yyyy-HH:mm")</p>
+            </div>
+        </div>
+        <hr  style="width: 500px; margin: auto; border-color:black"/>
+        <br />
+    }
+    
+}
+
+

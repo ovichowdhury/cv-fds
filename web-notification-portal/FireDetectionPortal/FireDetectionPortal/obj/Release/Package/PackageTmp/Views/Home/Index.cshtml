@@ -1,0 +1,25 @@
+﻿@model Entity.Notification
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_PortalLayout.cshtml";
+}
+
+<br />
+@if (Model == null)
+{
+    <p style="width:450px; margin:auto">No Notification to show</p>
+}
+else
+{
+    <div class="media" style="width:500px; margin:auto">
+        <img class="mr-3" src="@Url.Content(Model.ImageURL)" alt="fire Image" width="200" height="150">
+        <div class="media-body">
+            <p>Fire Rate : @Model.FireRate</p>
+            <p>Temperature : @Model.Temp</p>
+            <p>Smoke Rate : @Model.SmokeRate</p>
+            <p>Time : @Model.Time.ToString("dd/MM/yyyy-HH:mm")</p>
+        </div>
+    </div>
+}
+
